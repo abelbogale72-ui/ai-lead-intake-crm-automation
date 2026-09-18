@@ -1,2 +1,35 @@
-# ai-lead-intake-crm-automation
-AI Lead Intake &amp; CRM Automation built with n8n, Groq, Airtable, and Zapier — automated lead validation, AI qualification, duplicate detection, CRM updates, priority routing, and webhook responses
+# AI Lead Intake & CRM Automation
+
+An end-to-end **n8n automation workflow** for capturing website leads, validating incoming data, using AI to qualify and classify leads, storing them in Airtable, detecting duplicates, and routing high-priority leads through Zapier.
+
+## 🚀 Workflow Overview
+
+```text
+Website / Form
+      ↓
+Inbound Lead Webhook
+      ↓
+Normalize & Validate Lead
+      ↓
+Valid Lead?
+   ↙        ↘
+ No          Yes
+ ↓            ↓
+400 Error   Groq AI
+              ↓
+        Parse AI Result
+              ↓
+       Airtable Duplicate Check
+          ↙           ↘
+      Existing       New Lead
+         ↓              ↓
+   Update Airtable   Create Airtable
+          ↘           ↙
+              ↓
+       High Priority?
+          ↙        ↘
+        Yes         No
+         ↓           ↓
+      Zapier      Continue
+         ↘           ↙
+        Success Response
